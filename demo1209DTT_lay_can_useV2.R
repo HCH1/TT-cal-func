@@ -18,13 +18,13 @@ demo1209DTT_lay_can_useV1 <- function(file1){
   mx_dtt2_coldev2spi <- unique( paste(mx_dtt2$Device, mx_dtt2$SPICE, sep = " | ") ) 
   write.csv(x = mx_dtt2_coldev2spi, file = "o1208_mx_dtt2_coldev2spi.csv")
   ## TT rows
-  mx_dtt2_coldev <- unique(mx_dtt2$Device) # 124ea
+  mx_dtt2_coldev <- unique(mx_dtt2$Device) # 140ea
   write.csv(x = mx_dtt2_coldev, file = "o1208_mx_dtt2_coldev.csv")
   
-  mx_dtt2_colspi <- unique(mx_dtt2$SPICE)
+  mx_dtt2_colspi <- unique(mx_dtt2$SPICE) # 122ea
   write.csv(x = mx_dtt2_colspi, file = "o1208_mx_dtt2_colspi.csv")
   ## TT columns
-  mx_dtt2_colvar <- unique(mx_dtt2$variable) # 49ea, 123x49=6076
+  mx_dtt2_colvar <- unique(mx_dtt2$variable) # 55ea
   write.csv(x = mx_dtt2_colvar, file = "o1208_mx_dtt2_colvar.csv")
   ## pivot back
   mx_dtt3 <- dcast(mx_dtt2, Device + SPICE ~ variable)
@@ -38,8 +38,8 @@ demo1209DTT_lay_can_useV1 <- function(file1){
     df1 <- data.frame(mx_dtt2_val2$Device[1])
     df2 <- data.frame(mx_dtt2_val2$SPICE[1])
     df3 <- t(data.frame(mx_dtt2_val2$variable))
-    #mx_dtt2_coldev <- gsub("\\/"," ", mx_dtt2_coldev) # / cant be filename, avoid to use coldev.
-    write.csv(x = cbind(df1, df2, df3), file = paste("can_use", file1, "_", mx_dtt2_colspi[i], ".csv", sep = "") )
+    ## / cant be filename. use gsub(x) to replace
+    write.csv(x = cbind(df1, df2, df3), file = paste("can_use", file1, "_", gsub("\\/",";", mx_dtt2_coldev[i]), ".csv", sep = "") )
   }
   return( cbind(df1, df2, df3) )
 }

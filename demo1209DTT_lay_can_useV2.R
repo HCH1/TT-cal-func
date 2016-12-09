@@ -7,7 +7,7 @@
 #mx_dtt = read.csv(file1, header = TRUE)
 demo1209DTT_lay_can_useV1 <- function(file1){
   ## e.g. demo1209DTT_lay_can_useV1("28LPSe_Rev1.0_1.0_DTTn2.csv")
-  
+    
   mx_dtt = read.csv(file1, header = TRUE)
   # unpivot by library(reshape2)
   mx_dtt2 <- melt(mx_dtt, id = c("Device", "SPICE"), na.rm = TRUE)
@@ -38,8 +38,8 @@ demo1209DTT_lay_can_useV1 <- function(file1){
     df1 <- data.frame(mx_dtt2_val2$Device[1])
     df2 <- data.frame(mx_dtt2_val2$SPICE[1])
     df3 <- t(data.frame(mx_dtt2_val2$variable))
-    mx_dtt2_coldev <- gsub("\\/"," ", mx_dtt2_coldev) # / cant be filename
-    write.csv(x = cbind(df1, df2, df3), file = paste("can_use", file1, mx_dtt2_coldev[i], ".csv", sep = "") )
+    #mx_dtt2_coldev <- gsub("\\/"," ", mx_dtt2_coldev) # / cant be filename, avoid to use coldev.
+    write.csv(x = cbind(df1, df2, df3), file = paste("can_use", file1, mx_dtt2_colspi[i], ".csv", sep = "") )
   }
   return( cbind(df1, df2, df3) )
 }

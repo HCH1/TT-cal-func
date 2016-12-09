@@ -39,7 +39,7 @@ demo1209DTT_lay_can_useV1 <- function(file1){
     df2 <- data.frame(mx_dtt2_val2$SPICE[1])
     df3 <- t(data.frame(mx_dtt2_val2$variable))
     #mx_dtt2_coldev <- gsub("\\/"," ", mx_dtt2_coldev) # / cant be filename, avoid to use coldev.
-    write.csv(x = cbind(df1, df2, df3), file = paste("can_use", file1, mx_dtt2_colspi[i], ".csv", sep = "") )
+    write.csv(x = cbind(df1, df2, df3), file = paste("can_use", file1, "_", mx_dtt2_colspi[i], ".csv", sep = "") )
   }
   return( cbind(df1, df2, df3) )
 }

@@ -9,7 +9,7 @@
 demo1220DPTT_v1 <- function(file1){
 ## e.g. demo1220DPTT_v1("28LPSe_Rev1.0_1.0_Truth_Tables_DPTTn2v2.csv")
 ## mx_dptt = read.csv(file1, header = TRUE)
-mx_dptt = read.csv("28LPSe_Rev1.0_1.0_Truth_Tables_DPTTn2v2.csv", header = TRUE)
+mx_dptt = read.csv(file1, header = TRUE)
 # unpivot by library(reshape2)
 mx_dptt2 <- melt(mx_dptt, id = "Device", na.rm = TRUE)
 write.csv(x = mx_dptt2, file = "o1220_mx_dptt2.csv")
@@ -74,6 +74,6 @@ mx_dptt2_fil2 <- mx_dptt2_fil
     ## / cant be filename. use gsub(x) to replace
     write.csv(x = cbind(df1, df3), file = paste("DPTT_", file1, "_", gsub("\\/",";", mx_dptt2_coldev[i]), ".csv", sep = "") )
   }
-  return("ok")
+  return("done!")
 }
 ##

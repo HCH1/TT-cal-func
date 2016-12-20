@@ -67,10 +67,10 @@ mx_dptt2_fil2 <- mx_dptt2_fil
 
   for( i in 1:length(mx_dptt2_coldev) ){
 # length(mx_dptt2_coldev) 140ea
-    mx_dptt2_fil2 <- mx_dptt2_fil2[mx_dptt2_fil2[[1]] == mx_dptt2_coldev[i],]
+    mx_dptt2_fil3 <- mx_dptt2_fil2[mx_dptt2_fil2[[1]] == mx_dptt2_coldev[i],]
     ## use data.frame will be easy to cbind
-    df1 <- data.frame(mx_dptt2_fil2$Device[1])
-    df3 <- t(data.frame(mx_dptt2_fil2[[2]]))
+    df1 <- data.frame(mx_dptt2_fil3$Device[1])
+    df3 <- t(data.frame(mx_dptt2_fil3[[2]]))
     ## / cant be filename. use gsub(x) to replace
     write.csv(x = cbind(df1, df3), file = paste("DPTT_", file1, "_", gsub("\\/",";", mx_dptt2_coldev[i]), ".csv", sep = "") )
   }
